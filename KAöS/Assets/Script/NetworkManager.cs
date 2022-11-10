@@ -1,13 +1,13 @@
-using System;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
+    private PhotonView _photonView;
+    
     [Header("Interface")] 
     public TextMeshProUGUI serverStatue;
     public Button connectToServerBtn;
@@ -16,11 +16,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject mainMenuGo;
 
     public TextMeshProUGUI roomInputFieldInfo;
-    public TextMeshProUGUI roomGeneratedText;
 
-    public string generateCode;
-
-    public int countToJoinRoom = 4;
+    public byte countToJoinRoom = 4;
     private RoomOptions _roomOptions;
     private TypedLobby _typedLobby;
 
@@ -30,26 +27,27 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         _roomOptions = new RoomOptions
         {
+            PlayerTtl = 1000,
+            EmptyRoomTtl = 0,
             IsOpen = true,
             IsVisible = true,
-            EmptyRoomTtl = 0,
-            MaxPlayers = 4
+            MaxPlayers = countToJoinRoom
         };
-
-        _typedLobby = new TypedLobby("Hub", LobbyType.Default);
     }
-
     private void Update()
     {
         if (PhotonNetwork.InRoom)
         {
-            serverStatue.text = "Waiting for player : " + PhotonNetwork.CurrentRoom.PlayerCount + " / " + countToJoinRoom + " in room " + PhotonNetwork.CurrentRoom.Name + " with current lobby is " + PhotonNetwork.CurrentLobby;
+            serverStatue.text = "Waiting for player : " + PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers + " in room " + PhotonNetwork.CurrentRoom.Name + " with current lobby is " + PhotonNetwork.CurrentLobby;
 
-            if (PhotonNetwork.CurrentRoom.PlayerCount == countToJoinRoom)
+            if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
             {
                 PhotonNetwork.LoadLevel(1);
             }
-            
+        }
+        else
+        {
+            serverStatue.text = "Not in a room";
         }
     }
 
@@ -67,56 +65,20 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        SetServerStatueText("Connected");
         base.OnConnectedToMaster();
-        
+        SetServerStatueText("Connected...");
         connectScreenGo.SetActive(false);
         mainMenuGo.SetActive(true);
     }
 
     public void JoinRoom()
     {
-        PhotonNetwork.JoinRoom(roomInputFieldInfo.text);
-    }
-
-    public override void OnJoinRoomFailed(short returnCode, string message)
-    {
-        Debug.LogError(returnCode + " ; " + message );
-        base.OnJoinRoomFailed(returnCode, message);
-        PhotonNetwork.CreateRoom(roomInputFieldInfo.text);
-    }
-
-
-    public void CreateRoom()
-    {
-        string st = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-        char[] generated = new char[4];
-
-        for (int i = 0; i < generated.Length; i++)
-        {
-            generated[i] = st[Random.Range(0, st.Length)];
-            Debug.Log(generated[i]);
-        }
-
-        for (int i = 0; i < generated.Length; i++)
-        {
-            generateCode = generateCode.Insert(i, generated[i].ToString());
-        }
-
-        roomGeneratedText.text = "Room code : " + generateCode;
-        
-        PhotonNetwork.CreateRoom(generateCode); 
-    }
-
-    public override void OnCreateRoomFailed(short returnCode, string message)
-    {
-        base.OnCreateRoomFailed(returnCode, message);
+        string room = roomInputFieldInfo.text;
+        PhotonNetwork.JoinOrCreateRoom(room, _roomOptions, TypedLobby.Default);
     }
 
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
     }
-
 }
