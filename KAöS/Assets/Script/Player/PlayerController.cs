@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour, IPunObservable
     public float neighboorMarge = 2;
 
     private PhotonView view;
+    private float lag;
 
 // Start is called before the first frame update
     void Start()
@@ -38,9 +39,9 @@ public class PlayerController : MonoBehaviour, IPunObservable
 
     void Move()
     {
-        if (Input.GetKey(leftInput)) if( !(transform.localRotation.eulerAngles.z < neighboorLeft.transform.localRotation.eulerAngles.z && transform.localRotation.eulerAngles.z + moveSpeed + neighboorMarge > neighboorLeft.transform.localRotation.eulerAngles.z)) transform.Rotate(Vector3.forward * moveSpeed * Time.deltaTime);
+        if (Input.GetKey(leftInput)) if( !(transform.localRotation.eulerAngles.z < neighboorLeft.transform.localRotation.eulerAngles.z && transform.localRotation.eulerAngles.z + moveSpeed + neighboorMarge > neighboorLeft.transform.localRotation.eulerAngles.z)) transform.Rotate(Vector3.forward * moveSpeed * Time.deltaTime * lag);
         
-        if (Input.GetKey(rightInput)) if(!(transform.localRotation.eulerAngles.z > neighboorRight.transform.localRotation.eulerAngles.z && transform.localRotation.eulerAngles.z - moveSpeed - neighboorMarge < neighboorRight.transform.localRotation.eulerAngles.z)) transform.Rotate(Vector3.back*moveSpeed * Time.deltaTime); 
+        if (Input.GetKey(rightInput)) if(!(transform.localRotation.eulerAngles.z > neighboorRight.transform.localRotation.eulerAngles.z && transform.localRotation.eulerAngles.z - moveSpeed - neighboorMarge < neighboorRight.transform.localRotation.eulerAngles.z)) transform.Rotate(Vector3.back*moveSpeed * Time.deltaTime * lag); 
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -53,5 +54,7 @@ public class PlayerController : MonoBehaviour, IPunObservable
         {
             position = (Vector3)stream.ReceiveNext();
         }
+        
+        lag = Mathf.Abs((float)(PhotonNetwork.Time - info.SentServerTimestamp));
     }
 }
