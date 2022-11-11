@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="cffa9675-a069-4d6d-a380-248bfbf5f248" name="Changes" comment="" />
+=======
+    <list default="true" id="f3debf2d-38a7-424b-89d2-7cda397f1b5e" name="Changes" comment="" />
+>>>>>>> THM
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2HMxHhuE6w5FqA8ls8nLYnPJWpO" />
+=======
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/eba5c5b2c6de4af992b2cc99354e483e15d400/66/24be9a15/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Photon/PlayerSpawn.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HN4Njzb3smBnVYcHCjyenH5G6N" />
+>>>>>>> THM
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -22,10 +37,15 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+<<<<<<< HEAD
+=======
+    "settings.editor.selected.configurable": "preferences.keymap",
+>>>>>>> THM
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+<<<<<<< HEAD
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../../../KAos/FastBuild\KAöS.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -38,6 +58,12 @@
       <option name="EXE_PATH" value="C:\Program Files\Unity 2022.1.13f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\d.nathiez\Documents\Jam2022\FirstJam-2022\KAöS -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\d.nathiez\Documents\Jam2022\FirstJam-2022\KAöS" />
+=======
+    <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity 2022.1.13f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\t.marcuzzi\Documents\GIT\FirstJam-2022\KAöS -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\t.marcuzzi\Documents\GIT\FirstJam-2022\KAöS" />
+>>>>>>> THM
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
@@ -66,18 +92,29 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="cffa9675-a069-4d6d-a380-248bfbf5f248" name="Changes" comment="" />
       <created>1668108670446</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668108670446</updated>
       <workItem from="1668108694500" duration="15263000" />
+=======
+      <changelist id="f3debf2d-38a7-424b-89d2-7cda397f1b5e" name="Changes" comment="" />
+      <created>1668112172409</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668112172409</updated>
+      <workItem from="1668112180013" duration="17000" />
+      <workItem from="1668112212386" duration="9911000" />
+>>>>>>> THM
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< HEAD
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
@@ -92,6 +129,10 @@
       </map>
     </option>
   </component>
+=======
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+>>>>>>> THM
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
