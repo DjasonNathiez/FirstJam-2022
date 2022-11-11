@@ -1,9 +1,12 @@
+using Photon.Pun;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, IDamageable
 {
     public LevelManager _levelManager;
     public CoreManager coreManager;
+
+    public int experienceAmountValue;
     
     public int currentHealth;
 
@@ -24,6 +27,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
     private void Awake()
     {
+        _levelManager = FindObjectOfType<LevelManager>();
         coreManager = FindObjectOfType<CoreManager>();
     }
 
@@ -65,5 +69,11 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+
+        if (currentHealth <= 0)
+        {
+            coreManager.GetExperience(experienceAmountValue);
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
 }

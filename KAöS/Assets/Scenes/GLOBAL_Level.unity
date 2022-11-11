@@ -288,6 +288,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 796214324}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &796214326 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2275941907225460462, guid: da36d7989afa55044938fe25a877e514,
+    type: 3}
+  m_PrefabInstance: {fileID: 796214324}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &804342925
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df097fd0f422404da191d3ef21cdcfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  core: {fileID: 0}
+  core: {fileID: 796214326}
   enemyPrefab: {fileID: 3097389087152422596, guid: 18ffdae060a431e4384f82ededf5472b,
     type: 3}
   enemySpawnPoint:
@@ -326,6 +332,19 @@ MonoBehaviour:
   - {fileID: 1210073576}
   - {fileID: 1305008034}
   numberToSpawn: 2
+  enemySpawners:
+  - frequency: 18
+    enemyPrefab: {fileID: 3097389087152422596, guid: 18ffdae060a431e4384f82ededf5472b,
+      type: 3}
+    enemyMinSpawnCount: 10
+    enemyMaxSpawnCount: 20
+    enemySpawnPoints:
+    - {fileID: 1252620086}
+    - {fileID: 1210073576}
+    - {fileID: 1305008034}
+  timer: 0
+  frequencyLimiter: 60
+  spawnLatency: 1.3
 --- !u!4 &804342927
 Transform:
   m_ObjectHideFlags: 0
