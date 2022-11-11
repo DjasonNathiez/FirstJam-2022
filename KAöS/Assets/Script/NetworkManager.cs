@@ -15,7 +15,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public GameObject connectScreenGo;
     public GameObject mainMenuGo;
-
+    public GameObject hubGo;
+    
+    public Image experienceBar;
+    public CoreManager core;
+    
     public TextMeshProUGUI roomInputFieldInfo;
 
     public byte countToJoinRoom = 4;
@@ -39,6 +43,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
     private void Update()
     {
+        if (core != null)
+        {
+            experienceBar.fillAmount = core.experience / core.coreToLevelUp;
+        }
+        
         if (PhotonNetwork.InRoom)
         {
             serverStatue.text = "Waiting for player : " + PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers + " in room " + PhotonNetwork.CurrentRoom.Name + " with current lobby is " + PhotonNetwork.CurrentLobby;

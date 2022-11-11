@@ -342,6 +342,15 @@ MonoBehaviour:
     - {fileID: 1252620086}
     - {fileID: 1210073576}
     - {fileID: 1305008034}
+  - frequency: 18
+    enemyPrefab: {fileID: 3097389087152422596, guid: 18ffdae060a431e4384f82ededf5472b,
+      type: 3}
+    enemyMinSpawnCount: 10
+    enemyMaxSpawnCount: 20
+    enemySpawnPoints:
+    - {fileID: 1252620086}
+    - {fileID: 1210073576}
+    - {fileID: 1305008034}
   timer: 0
   frequencyLimiter: 60
   spawnLatency: 1.3

@@ -9,12 +9,16 @@ public class CoreManager : MonoBehaviourPunCallbacks,IDamageable, IPunObservable
     private Rigidbody2D rb;
     
     public int currentLife;
-    public int experience;
+    public float experience;
+    public float coreToLevelUp = 100;
 
     private void Awake()
     {
         if (Instance != null) return;
         Instance = this;
+
+        FindObjectOfType<NetworkManager>().core = this;
+        FindObjectOfType<NetworkManager>().hubGo.SetActive(true);
     }
 
     private void Start()
