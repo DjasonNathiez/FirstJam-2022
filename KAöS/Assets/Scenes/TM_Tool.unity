@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373235982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 2.61, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -323,7 +323,7 @@ MonoBehaviour:
   bullets:
   - prefab: {fileID: 8460960861948780089, guid: cf6ff07a958672b4996a57627fad0b8c,
       type: 3}
-    scriptable: {fileID: 11400000, guid: 8cf767fde217fa54ba55a9cb622c1c80, type: 2}
+    scriptable: {fileID: 11400000, guid: 29b409084ed3c9e45bbfdbeb94ce9bf8, type: 2}
 --- !u!4 &1756971305
 Transform:
   m_ObjectHideFlags: 0
@@ -352,6 +352,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1849799286684386865, guid: 9c1eca7113e2cae409455c4d418abe26,
+        type: 3}
+      propertyPath: statModifiers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849799286684386865, guid: 9c1eca7113e2cae409455c4d418abe26,
+        type: 3}
+      propertyPath: weapons.Array.data[0].scriptable
+      value: 
+      objectReference: {fileID: 11400000, guid: 29b409084ed3c9e45bbfdbeb94ce9bf8,
+        type: 2}
     - target: {fileID: 1849799286684386876, guid: 9c1eca7113e2cae409455c4d418abe26,
         type: 3}
       propertyPath: sceneViewId
@@ -370,7 +381,7 @@ PrefabInstance:
     - target: {fileID: 1849799286684386877, guid: 9c1eca7113e2cae409455c4d418abe26,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.31
       objectReference: {fileID: 0}
     - target: {fileID: 1849799286684386877, guid: 9c1eca7113e2cae409455c4d418abe26,
         type: 3}
