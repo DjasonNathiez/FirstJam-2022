@@ -1,7 +1,6 @@
-using Photon.Pun;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IPunObservable
+public class PlayerController : MonoBehaviour
 {
     [Header("Input")] 
     [SerializeField] private KeyCode leftInput;
@@ -17,23 +16,10 @@ public class PlayerController : MonoBehaviour, IPunObservable
     public GameObject neighboorRight;
     public float neighboorMarge = 2;
 
-     // en %
-
-    private PhotonView view;
-    private float lag;
-
-// Start is called before the first frame update
-    void Start()
-    {
-        view = GetComponent<PhotonView>();
-
-        if(!view.IsMine)return;
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if(!view.IsMine) return;
         if(CoreManager.Instance != null)position = CoreManager.Instance.transform.position;
         transform.position = position;
         if (canMove)Move();
@@ -45,18 +31,5 @@ public class PlayerController : MonoBehaviour, IPunObservable
          
         if (Input.GetKey(rightInput)) if(!(transform.localRotation.eulerAngles.z > neighboorRight.transform.localRotation.eulerAngles.z && transform.localRotation.eulerAngles.z - moveSpeed - neighboorMarge < neighboorRight.transform.localRotation.eulerAngles.z)) transform.Rotate(Vector3.back*moveSpeed * Time.deltaTime); 
     }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            //stream.SendNext("position");
-        }
-        else
-        {
-           // position = (Vector3)stream.ReceiveNext();
-        }
-        
-        lag = Mathf.Abs((float)(PhotonNetwork.Time - info.SentServerTimestamp));
-    }
+    
 }

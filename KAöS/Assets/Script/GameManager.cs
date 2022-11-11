@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
-using Photon.Pun;
 using UnityEngine;
 
-public class GameManager : MonoBehaviourPunCallbacks
+public class GameManager : MonoBehaviour
 {
+    public GameObject[] players = new GameObject[3];
+    public int connectedPlayerCount;
+    
     public static GameManager Instance;
 
     public GameObject localPlayer;
@@ -21,12 +24,31 @@ public class GameManager : MonoBehaviourPunCallbacks
         Instance = this;
     }
 
-    public void LocalAddPlayerID()
+    private void Update()
     {
-        photonView.RPC("AddPlayerID", RpcTarget.AllBufferedViaServer);
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if(!players[0].activeSelf) players[0].SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            if(!players[1].activeSelf) players[1].SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            if(!players[2].activeSelf) players[2].SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            if(!players[3].activeSelf) players[3].SetActive(true);
+            
+        }
     }
 
-    [PunRPC] public void AddPlayerID()
+    public void AddPlayerID()
     {
         playersList.AddRange(GameObject.FindGameObjectsWithTag("Player"));
         

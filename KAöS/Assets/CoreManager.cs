@@ -1,8 +1,6 @@
-using System;
-using Photon.Pun;
 using UnityEngine;
 
-public class CoreManager : MonoBehaviourPunCallbacks,IDamageable, IPunObservable
+public class CoreManager : MonoBehaviour,IDamageable
 {
     public static CoreManager Instance;
     
@@ -17,8 +15,6 @@ public class CoreManager : MonoBehaviourPunCallbacks,IDamageable, IPunObservable
         if (Instance != null) return;
         Instance = this;
 
-        FindObjectOfType<NetworkManager>().core = this;
-        FindObjectOfType<NetworkManager>().hubGo.SetActive(true);
     }
 
     private void Start()
@@ -42,18 +38,4 @@ public class CoreManager : MonoBehaviourPunCallbacks,IDamageable, IPunObservable
         currentLife -= amount;
     }
     
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            stream.SendNext("currentLife");
-            stream.SendNext("experience");
-        }
-        else
-        {
-            currentLife = (int)stream.ReceiveNext();
-            experience = (int)stream.ReceiveNext();
-        }
-    }
 }

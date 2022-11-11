@@ -1,4 +1,3 @@
-using Photon.Pun;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, IDamageable
@@ -73,7 +72,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         if (currentHealth <= 0)
         {
             coreManager.GetExperience(experienceAmountValue);
-            PhotonNetwork.Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 }

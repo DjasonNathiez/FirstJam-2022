@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
-using Photon.Pun;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class LevelManager : MonoBehaviourPunCallbacks
+public class LevelManager : MonoBehaviour
 {
     public GameObject core;
 
@@ -35,8 +34,6 @@ public class LevelManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        photonView.RPC("SetPositions", RpcTarget.AllBufferedViaServer);
-
         foreach (var player in GameManager.Instance.playersList)
         {
             player.GetComponent<PlayerNetworkSetup>().InitPlayer();
@@ -80,27 +77,8 @@ public class LevelManager : MonoBehaviourPunCallbacks
         int point = Random.Range(0, enemySpawner.enemySpawnPoints.Length);
         Vector3 spawnPoint = new Vector3(enemySpawner.enemySpawnPoints[point].position.x + Random.Range(0,5), enemySpawner.enemySpawnPoints[point].position.x + Random.Range(0,5), 0);
         
-        GameObject newEnemy = PhotonNetwork.Instantiate(enemySpawner.enemyPrefab.name,
+        GameObject newEnemy = Instantiate(enemySpawner.enemyPrefab,
             enemySpawner.enemySpawnPoints[Random.Range(0, enemySpawner.enemySpawnPoints.Length)].position,
             Quaternion.identity);
     }
-
-    [PunRPC]
-    private void SetPositions()
-    {
-        for (int i = 0; i < GameManager.Instance.playersList.Count; i++)
-        {
-            GameManager.Instance.transform.position = core.transform.position;
-            GameManager.Instance.playersList[i].transform.rotation = Quaternion.Euler(0, 0, i * 90);
-        }
-    }
-
-    public void EnemySpawn(GameObject enemyToSpawn)
-    {
-        GameObject newEnemy = PhotonNetwork.Instantiate(enemyToSpawn.name,
-            enemySpawnPoint[Random.Range(0, enemySpawnPoint.Length)].position, Quaternion.identity);
-
-        newEnemy.GetComponent<EnemyBehaviour>()._levelManager = this;
-    }
-    
 }
