@@ -92,7 +92,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void InstantiatePlayer()
     {
-        GameObject newPlayer = PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0,0,0), Quaternion.Euler(0,0,joinedPlayer * 90));
+        GameObject newPlayer = PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0,0,0), Quaternion.Euler(0,0, 0));
 
         newPlayer.name = "player_" + newPlayer.GetComponent<PhotonView>().ViewID;
         
@@ -100,8 +100,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             GameManager.Instance.localPlayer = newPlayer;
         }
-
-        joinedPlayer += 1;
+        
         
         GameManager.Instance.LocalAddPlayerID();
     }

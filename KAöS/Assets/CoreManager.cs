@@ -11,12 +11,14 @@ public class CoreManager : MonoBehaviour,IDamageable, IPunObservable
 
     private void Awake()
     {
+        
         if (Instance != null) return;
         Instance = this;
     }
 
     private void Start()
     {
+        Debug.Log("Create");
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -39,7 +41,7 @@ public class CoreManager : MonoBehaviour,IDamageable, IPunObservable
         }
         else
         {
-            currentLife = (int)stream.ReceiveNext();
+            //currentLife = (int)stream.ReceiveNext();
         }
     }
 }
