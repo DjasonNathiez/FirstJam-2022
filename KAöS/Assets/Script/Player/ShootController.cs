@@ -35,7 +35,7 @@ public class ShootController : MonoBehaviour
 
     
 
-    private PlayerStats stats;
+    private PlayerStats stats = new PlayerStats();
     public List<StatScriptable> statModifiers = new List<StatScriptable>();
 
 

@@ -1647,7 +1647,7 @@ MonoBehaviour:
   experienceBar: {fileID: 948855525}
   core: {fileID: 0}
   roomInputFieldInfo: {fileID: 1173773803}
-  countToJoinRoom: 1
+  countToJoinRoom: 2
   playerPrefab: {fileID: 1849799286684386864, guid: 9c1eca7113e2cae409455c4d418abe26,
     type: 3}
 --- !u!4 &1210901438
