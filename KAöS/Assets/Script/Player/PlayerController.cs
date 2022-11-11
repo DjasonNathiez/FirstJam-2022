@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour, IPunObservable
     public GameObject neighboorRight;
     public float neighboorMarge = 2;
 
+     // en %
+
     private PhotonView view;
     private float lag;
 

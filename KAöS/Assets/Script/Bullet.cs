@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class Bullet : MonoBehaviour
 {
     public WeaponScriptable script;
+    public PlayerStats sender;
     
     private float timer;
 
@@ -20,7 +22,7 @@ public class Bullet : MonoBehaviour
     public void Enable()
     {
         timer = script.bulletLifetime;
-        transform.localScale = new Vector2(script.bulletSize.x*.05f, script.bulletSize.y*.1f);
+        transform.localScale = new Vector2(script.bulletSize.x*.05f*sender.sizeRatio, script.bulletSize.y*.1f*sender.sizeRatio);
         enable = true;
     }
 
@@ -43,6 +45,14 @@ public class Bullet : MonoBehaviour
 
     private void OnDisable()
     {
-        //PoolManager.Instance.Enqueue(this);
+        PoolManager.Instance.Enqueue(this);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        IDamageable iD = other.GetComponent<IDamageable>();
+        int damage = (int)(script.damage * sender.damageRatio) + sender.damageAdd;
+        damage = (int)(damage * (Random.Range(0f, 100f) < sender.critChance ? sender.critChance : 1));
+        if(iD != null) iD.TakeDamage(damage);
     }
 }

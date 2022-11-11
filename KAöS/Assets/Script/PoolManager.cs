@@ -45,7 +45,7 @@ public class PoolManager : MonoBehaviour
     }
 
 
-    public void PoolInstantiate(WeaponScriptable weapon, Vector3 position, Vector3 rotation)
+    public void PoolInstantiate(WeaponScriptable weapon, PlayerStats sender, Vector3 position, Vector3 rotation)
     {
         //Debug.Log("Instantiate");
         GameObject go = null;
@@ -54,6 +54,7 @@ public class PoolManager : MonoBehaviour
            go = Instantiate(prefabDictionary[weapon], position, Quaternion.Euler(rotation), transform);
            Bullet bul = go.GetComponent<Bullet>();
            bul.script = weapon;
+           bul.sender = sender;
            bul.Enable();
         }
         else
