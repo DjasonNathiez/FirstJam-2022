@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1849799286684386865}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537333f777aa822459efe481a329ce44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftInput: 0
-  rightInput: 0
+  leftInput: 282
+  rightInput: 283
   moveSpeed: 1
   canMove: 1
   neighboorLeft: {fileID: 0}

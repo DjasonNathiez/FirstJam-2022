@@ -1504,8 +1504,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1210901438}
   - component: {fileID: 1210901437}
-  - component: {fileID: 1210901439}
   - component: {fileID: 1210901440}
+  - component: {fileID: 1210901439}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -1568,7 +1568,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 999
+  sceneViewId: 50
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &1210901440
