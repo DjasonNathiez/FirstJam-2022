@@ -1529,7 +1529,7 @@ MonoBehaviour:
   connectScreenGo: {fileID: 642483230}
   mainMenuGo: {fileID: 299633436}
   roomInputFieldInfo: {fileID: 1173773803}
-  countToJoinRoom: 2
+  countToJoinRoom: 1
 --- !u!4 &1210901438
 Transform:
   m_ObjectHideFlags: 0

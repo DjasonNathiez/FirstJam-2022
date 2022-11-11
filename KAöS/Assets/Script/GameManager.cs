@@ -1,18 +1,12 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
-using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager Instance;
 
     
     public List<PlayerController> playersList = new List<PlayerController>();
-    
-    
-    
     
     private void Awake()
     {
@@ -25,9 +19,14 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-    public void AddPlayer(PlayerController newPlayer)
+    public void AddPlayerToList(PhotonView newPlayer)
     {
-        playersList.Add(newPlayer);
+        photonView.RPC("AddPlayer", RpcTarget.AllBufferedViaServer, newPlayer); 
+    }
+    
+    [PunRPC] public void AddPlayer(PhotonView newPlayer)
+    {
+        playersList.Add(newPlayer.GetComponent<PlayerController>());
 
         if (playersList.Count == 4)
         {
@@ -38,19 +37,8 @@ public class GameManager : MonoBehaviour
                 
                 if (i != playersList.Count - 1) playersList[i].neighboorLeft = playersList[i + 1];
                 else playersList[i].neighboorLeft = playersList[0];
-            }
-        Debug.Log("Neighboor Set");
+            } 
         }
-        
-    }
-    
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 }
