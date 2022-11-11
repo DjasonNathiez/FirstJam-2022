@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour, IPunObservable
 
     void Move()
     {
-        Debug.Log($"!({transform.localRotation.eulerAngles.z} > {neighboorLeft.transform.localRotation.eulerAngles.z} && {transform.localRotation.eulerAngles.z - moveSpeed - neighboorMarge} < {neighboorLeft.transform.localRotation.eulerAngles.z})");
         if (Input.GetKey(leftInput)) if( !(transform.localRotation.eulerAngles.z < neighboorLeft.transform.localRotation.eulerAngles.z && transform.localRotation.eulerAngles.z + moveSpeed + neighboorMarge > neighboorLeft.transform.localRotation.eulerAngles.z)) transform.Rotate(Vector3.forward * moveSpeed);
         
         if (Input.GetKey(rightInput)) if(!(transform.localRotation.eulerAngles.z > neighboorRight.transform.localRotation.eulerAngles.z && transform.localRotation.eulerAngles.z - moveSpeed - neighboorMarge < neighboorRight.transform.localRotation.eulerAngles.z)) transform.Rotate(Vector3.back*moveSpeed); 
