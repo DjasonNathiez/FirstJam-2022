@@ -9,13 +9,11 @@ public class PlayerController : MonoBehaviour, IPunObservable
     [Header("Stats")]
     [SerializeField] float moveSpeed = 1;
     
-    [HideInInspector] public bool canMove;
+    public bool canMove = true;
 
-    public PlayerController neighboorLeft;
-    public PlayerController neighboorRight;
+    public GameObject neighboorLeft;
+    public GameObject neighboorRight;
     public float neighboorMarge = 2;
-
-
 
     private PhotonView view;
 
@@ -23,22 +21,16 @@ public class PlayerController : MonoBehaviour, IPunObservable
     void Start()
     {
         view = GetComponent<PhotonView>();
-        
-        
+
         if(!view.IsMine)return;
-        
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         if(!view.IsMine) return;
-
+        
         if (canMove)Move();
-
     }
 
     void Move()
@@ -49,9 +41,7 @@ public class PlayerController : MonoBehaviour, IPunObservable
         if (Input.GetKey(rightInput)) if(!(transform.localRotation.eulerAngles.z > neighboorRight.transform.localRotation.eulerAngles.z && transform.localRotation.eulerAngles.z - moveSpeed - neighboorMarge < neighboorRight.transform.localRotation.eulerAngles.z)) transform.Rotate(Vector3.back*moveSpeed); 
     }
 
-
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        
     }
 }

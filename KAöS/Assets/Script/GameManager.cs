@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using Photon.Pun;
+using UnityEngine;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager Instance;
+
+    public GameObject localPlayer;
     
-    public List<PlayerController> playersList = new List<PlayerController>();
+    public List<GameObject> playersList = new List<GameObject>();
 
     private void Awake()
     {
@@ -25,39 +28,17 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     [PunRPC] public void AddPlayerID()
     {
-        playersList.AddRange(FindObjectsOfType<PlayerController>());
+        playersList.AddRange(GameObject.FindGameObjectsWithTag("Player"));
         
-        if (playersList.Count == 4)
+        for (int i = 0; i < playersList.Count; i++)
         {
-            for (int i = 0; i < playersList.Count; i++)
-            {
-                if (i != 0) playersList[i].neighboorRight = playersList[i - 1];
-                else playersList[i].neighboorRight = playersList[playersList.Count-1];
+            PlayerController playerController = playersList[i].GetComponent<PlayerController>();
+            
+            if (i != 0) playerController.neighboorRight = playersList[i - 1].gameObject;
+            else playerController.neighboorRight = playersList[playersList.Count-1].gameObject;
                 
-                if (i != playersList.Count - 1) playersList[i].neighboorLeft = playersList[i + 1];
-                else playersList[i].neighboorLeft = playersList[0];
-            } 
+            if (i != playersList.Count - 1) playerController.neighboorLeft = playersList[i + 1].gameObject;
+            else playerController.neighboorLeft = playersList[0].gameObject;
         }
     }
-
-/*
-     public void AddPlayer(PhotonView newPlayer)
-    {
-        playersList.Add(newPlayer.GetComponent<PlayerController>());
-
-        if (playersList.Count == 4)
-        {
-            for (int i = 0; i < playersList.Count; i++)
-            {
-                if (i != 0) playersList[i].neighboorRight = playersList[i - 1];
-                else playersList[i].neighboorRight = playersList[playersList.Count-1];
-                
-                if (i != playersList.Count - 1) playersList[i].neighboorLeft = playersList[i + 1];
-                else playersList[i].neighboorLeft = playersList[0];
-            } 
-        }
-        
-    }
-
-*/
 }

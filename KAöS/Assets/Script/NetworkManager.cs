@@ -2,6 +2,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
@@ -23,6 +24,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+        
         connectScreenGo.SetActive(true);
 
         _roomOptions = new RoomOptions
@@ -40,9 +43,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             serverStatue.text = "Waiting for player : " + PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers + " in room " + PhotonNetwork.CurrentRoom.Name + " with current lobby is " + PhotonNetwork.CurrentLobby;
 
-            if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
+            if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers && SceneManager.GetActiveScene().name != "GLOBAL_Level")
             {
-                PhotonNetwork.LoadLevel(1);
+                PhotonNetwork.LoadLevel("GLOBAL_Level");
+                mainMenuGo.SetActive(false);
             }
         }
         else
@@ -80,5 +84,23 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
+        InstantiatePlayer();
+    }
+    
+    [SerializeField] private GameObject playerPrefab;
+    private int joinedPlayer;
+
+    public void InstantiatePlayer()
+    {
+        GameObject newPlayer = PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0,0,0), Quaternion.Euler(0,0,joinedPlayer * 90));
+
+        newPlayer.name = "player_" + newPlayer.GetComponent<PhotonView>().ViewID;
+        
+        if (newPlayer.GetComponent<PhotonView>().IsMine)
+        {
+            GameManager.Instance.localPlayer = newPlayer;
+        }
+        
+        GameManager.Instance.LocalAddPlayerID();
     }
 }
