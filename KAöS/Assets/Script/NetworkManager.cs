@@ -100,6 +100,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             GameManager.Instance.localPlayer = newPlayer;
         }
+
+        joinedPlayer += 1;
         
         GameManager.Instance.LocalAddPlayerID();
     }
