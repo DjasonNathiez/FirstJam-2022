@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dd60286b5f8264791e473dab577805, type: 3}
   m_Name: U_CRIT-Chance
   m_EditorClassIdentifier: 
+  rarity: 1
   modifiers:
-  - stat: 6
+  - stat: 4
     value: 10

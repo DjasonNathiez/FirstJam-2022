@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     private void OnEnable()
     {
         timer = script.bulletLifetime;
+        if (enable) Enable();
     }
 
     public void Enable()
@@ -31,7 +32,6 @@ public class Bullet : MonoBehaviour
     private void FixedUpdate()
     {
         if(!enable)return;
-        Debug.Log(script.speedCurve.Evaluate(Mathf.InverseLerp(script.bulletLifetime,0,timer)));
         transform.position += transform.up * script.bulletSpeed * script.speedCurve.Evaluate(Mathf.InverseLerp(script.bulletLifetime,0,timer)) ;
         if (timer <= 0)
         {
@@ -47,7 +47,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         IDamageable iD = other.GetComponent<IDamageable>();
-        int damage = (int)(script.damage * sender.damageRatio) + sender.damageAdd;
+        int damage = (int)(script.damage * sender.damageRatio);
         damage = (int)(damage * (Random.Range(0f, 100f) < sender.critChance ? sender.critChance : 1));
         if(iD != null) iD.TakeDamage(damage);
     }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dd60286b5f8264791e473dab577805, type: 3}
   m_Name: R_MC_Pourc
   m_EditorClassIdentifier: 
+  rarity: 2
   modifiers:
-  - stat: 5
-    value: 0
+  - stat: 3
+    value: 1.12

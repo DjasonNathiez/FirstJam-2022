@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: C_SIZE-Ratio
   m_EditorClassIdentifier: 
   modifiers:
-  - stat: 4
-    value: 0
+  - stat: 2
+    value: 1.05

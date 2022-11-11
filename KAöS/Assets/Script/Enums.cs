@@ -6,6 +6,11 @@ public class Enums : MonoBehaviour
 {
     public enum Stats
     {
-        firerateRatio, firerateAdd, damageRatio, damageAdd, sizeRatio, multiCastChance, criticalChance, criticalDamage
+        firerateRatio, damageRatio, sizeRatio, multiCastChance, criticalChance, criticalDamage
+    }
+
+    public enum Rarity
+    {
+        common, unccommon, rare, epic, legendary
     }
 }

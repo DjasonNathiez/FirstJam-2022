@@ -7,9 +7,7 @@ using Random = UnityEngine.Random;
 public class PlayerStats
     {
         public float firerateRatio = 1; //Ratio
-        public float firerateAdd = 0; //Additive
         public float damageRatio = 1;// Ratio
-        public int damageAdd = 0;// Additive
         public float sizeRatio = 1; // ratio
         public float multiCastChance = 0; //en %
         public float critChance = 0; // en %
@@ -56,7 +54,7 @@ public class ShootController : MonoBehaviour
             if(timers[i] <= 0)
             {
                 Shoot(weapons[i].scriptable);
-                timers[i] = weapons[i].scriptable.firerate/stats.firerateRatio - stats.firerateAdd;
+                timers[i] = weapons[i].scriptable.firerate/stats.firerateRatio;
             }
         }
     }
@@ -79,7 +77,6 @@ public class ShootController : MonoBehaviour
                 {
                     float newAngle = rotation.z + i * (scriptable.paternAngle / (totalbullet - 1));
                     Vector3 rota = new Vector3(0, 0, newAngle);
-                    Debug.Log(rota);
                     PoolManager.Instance.PoolInstantiate(scriptable, stats, shootTransform.position, rota);
                     
                 }
@@ -118,19 +115,13 @@ public class ShootController : MonoBehaviour
                 switch (mod.stat)
                 {
                     case Enums.Stats.firerateRatio:
-                        stats.firerateRatio += mod.value;
-                        break;
-                    case Enums.Stats.firerateAdd:
-                        stats.firerateAdd += mod.value;
+                        stats.firerateRatio *= mod.value;
                         break;
                     case Enums.Stats.damageRatio:
-                        stats.damageRatio += mod.value;
-                        break;
-                    case Enums.Stats.damageAdd:
-                        stats.damageAdd += (int)mod.value;
+                        stats.damageRatio *= mod.value;
                         break;
                     case Enums.Stats.sizeRatio:
-                        stats.sizeRatio += mod.value;
+                        stats.sizeRatio *= mod.value;
                         break;
                     case Enums.Stats.multiCastChance:
                         stats.multiCastChance += mod.value;

@@ -11,7 +11,7 @@ public class WeaponScriptableEditor : Editor
     {
         WeaponScriptable script = (WeaponScriptable)target;
 
-        script.firerate = EditorGUILayout.Slider("Firerate",script.firerate,0.1f,2f);
+        script.firerate = EditorGUILayout.Slider("Firerate",script.firerate,0.1f,5f);
         script.damage = EditorGUILayout.IntField("Damage", script.damage);
         EditorGUILayout.Space();
         if (script.coneShoot = EditorGUILayout.Toggle("Cone Shot", script.coneShoot))

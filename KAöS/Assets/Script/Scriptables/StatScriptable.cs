@@ -13,5 +13,6 @@ public class ModifierData
 [CreateAssetMenu(fileName = "New Stat Modifier", menuName = "Stat Modifier")]
 public class StatScriptable : ScriptableObject
 {
+    public Enums.Rarity rarity;
     public List<ModifierData> modifiers;
 }

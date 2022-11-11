@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: C_MC_Pourc
   m_EditorClassIdentifier: 
   modifiers:
-  - stat: 5
-    value: 0
+  - stat: 3
+    value: 1.04
