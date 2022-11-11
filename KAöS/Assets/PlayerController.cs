@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour, IPunObservable
 {
@@ -39,7 +35,7 @@ public class PlayerController : MonoBehaviour, IPunObservable
     {
 
 
-        //if(!view.IsMine) return;
+        if(!view.IsMine) return;
 
         if (canMove)Move();
 
