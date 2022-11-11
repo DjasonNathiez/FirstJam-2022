@@ -11,6 +11,7 @@ public class WeaponScriptableEditor : Editor
     {
         WeaponScriptable script = (WeaponScriptable)target;
 
+        script.rarity = (Enums.Rarity)EditorGUILayout.EnumPopup("Rarity", script.rarity);
         script.firerate = EditorGUILayout.Slider("Firerate",script.firerate,0.1f,5f);
         script.damage = EditorGUILayout.IntField("Damage", script.damage);
         EditorGUILayout.Space();
@@ -27,6 +28,7 @@ public class WeaponScriptableEditor : Editor
             if (script.shotLatency > 0f) script.randomLatency = EditorGUILayout.Toggle("RandomLatency", script.randomLatency);
         }
         script.bulletSize = EditorGUILayout.Vector2Field("Bullet Size", script.bulletSize);
+        script.moveShot = EditorGUILayout.FloatField("Move Shot", script.moveShot);
         script.bulletSpeed = EditorGUILayout.FloatField("Bullet Speed", script.bulletSpeed);
         script.speedCurve = EditorGUILayout.CurveField("Speed Curve", script.speedCurve);
         script.bulletLifetime = EditorGUILayout.FloatField("Bullet Lifetime", script.bulletLifetime);

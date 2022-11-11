@@ -33,7 +33,7 @@ Transform:
   - {fileID: 1849799287855543922}
   - {fileID: 1849799287156355283}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1849799286684386866
 MonoBehaviour:
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftInput: 282
   rightInput: 283
+  breakInput: 0
   moveSpeed: 30
   canMove: 1
   neighboorLeft: {fileID: 0}
@@ -68,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootTransform: {fileID: 1849799287156355283}
   weapons:
-  - scriptable: {fileID: 11400000, guid: 8cf767fde217fa54ba55a9cb622c1c80, type: 2}
+  - scriptable: {fileID: 11400000, guid: 632081c787155544a91ae07489eb7957, type: 2}
     cooldown: 0
   statModifiers: []
 --- !u!1 &1849799287156355282

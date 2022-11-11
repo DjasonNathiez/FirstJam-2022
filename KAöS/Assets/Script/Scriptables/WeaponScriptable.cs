@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Weapon")]
 public class WeaponScriptable : ScriptableObject
 {
+    public Enums.Rarity rarity;
     public float firerate = 1f;
     public int damage = 10;
     public int bulletNumber = 1;
