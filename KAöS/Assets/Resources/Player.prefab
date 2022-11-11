@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 2730661207045351565}
   - component: {fileID: 1923845921}
   - component: {fileID: 4403355727691317767}
+  - component: {fileID: 1676792612554341683}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -179,6 +180,25 @@ MonoBehaviour:
   neighboorLeft: {fileID: 0}
   neighboorRight: {fileID: 0}
   neighboorMarge: 25
+--- !u!114 &1676792612554341683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569277311202164354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86dd5e00671a69645a36f997cad9cba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootTransform: {fileID: 6284264320006743866}
+  weapons:
+  - scriptable: {fileID: 0}
+    cooldown: 0
+  - scriptable: {fileID: 0}
+    cooldown: 0
+  timers: []
 --- !u!1 &2935753162626792035
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2935753162626792035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6815, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
