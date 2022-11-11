@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: C_CRIT-Dmg
   m_EditorClassIdentifier: 
   modifiers:
-  - stat: 7
+  - stat: 5
     value: 12

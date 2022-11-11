@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dd60286b5f8264791e473dab577805, type: 3}
   m_Name: E_SIZE-Ratio
   m_EditorClassIdentifier: 
+  rarity: 3
   modifiers:
-  - stat: 4
-    value: 0
+  - stat: 2
+    value: 1.2

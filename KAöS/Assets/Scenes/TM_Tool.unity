@@ -355,8 +355,62 @@ PrefabInstance:
     - target: {fileID: 1849799286684386865, guid: 9c1eca7113e2cae409455c4d418abe26,
         type: 3}
       propertyPath: statModifiers.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1849799286684386865, guid: 9c1eca7113e2cae409455c4d418abe26,
+        type: 3}
+      propertyPath: statModifiers.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: bfba2725e91ef694fb0e55856445e98d,
+        type: 2}
+    - target: {fileID: 1849799286684386865, guid: 9c1eca7113e2cae409455c4d418abe26,
+        type: 3}
+      propertyPath: statModifiers.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 194584c6d562e3d4ea034b8e522a51e5,
+        type: 2}
+    - target: {fileID: 1849799286684386865, guid: 9c1eca7113e2cae409455c4d418abe26,
+        type: 3}
+      propertyPath: statModifiers.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: cac1f8a9409c48743a7840e7a0ce62b9,
+        type: 2}
+    - target: {fileID: 1849799286684386865, guid: 9c1eca7113e2cae409455c4d418abe26,
+        type: 3}
+      propertyPath: statModifiers.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: bd94dfc06615f4744bb305f00277efa6,
+        type: 2}
+    - target: {fileID: 1849799286684386865, guid: 9c1eca7113e2cae409455c4d418abe26,
+        type: 3}
+      propertyPath: statModifiers.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: b816accfcdc1a6f43b9bb9059ca52b41,
+        type: 2}
+    - target: {fileID: 1849799286684386865, guid: 9c1eca7113e2cae409455c4d418abe26,
+        type: 3}
+      propertyPath: statModifiers.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 17c83748d71a9f947bb61de8fe45499f,
+        type: 2}
+    - target: {fileID: 1849799286684386865, guid: 9c1eca7113e2cae409455c4d418abe26,
+        type: 3}
+      propertyPath: statModifiers.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 380d0b559513e2849861401a2bf7406d,
+        type: 2}
+    - target: {fileID: 1849799286684386865, guid: 9c1eca7113e2cae409455c4d418abe26,
+        type: 3}
+      propertyPath: statModifiers.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: c956476834243144393f0d3ae55b4d7a,
+        type: 2}
+    - target: {fileID: 1849799286684386865, guid: 9c1eca7113e2cae409455c4d418abe26,
+        type: 3}
+      propertyPath: statModifiers.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 226d93190e0441248ad7bc104cb2b5d7,
+        type: 2}
     - target: {fileID: 1849799286684386865, guid: 9c1eca7113e2cae409455c4d418abe26,
         type: 3}
       propertyPath: weapons.Array.data[0].scriptable

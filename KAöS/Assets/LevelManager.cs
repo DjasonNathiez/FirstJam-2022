@@ -32,14 +32,6 @@ public class LevelManager : MonoBehaviour
         core = FindObjectOfType<CoreManager>().gameObject;
     }
 
-    void Start()
-    {
-        foreach (var player in GameManager.Instance.playersList)
-        {
-            player.GetComponent<PlayerNetworkSetup>().InitPlayer();
-        }
-    }
-
     private void Update()
     {
         if (timer <= frequencyLimiter)

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dd60286b5f8264791e473dab577805, type: 3}
   m_Name: L_DMG-Ratio
   m_EditorClassIdentifier: 
+  rarity: 4
   modifiers:
-  - stat: 2
-    value: 0
+  - stat: 1
+    value: 2
