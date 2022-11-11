@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour
     [Header("Input")] 
     [SerializeField] private KeyCode leftInput;
     [SerializeField] private KeyCode rightInput;
+    [SerializeField] private KeyCode breakInput;
+    
     [Header("Stats")]
     [SerializeField] float moveSpeed = 1;
 

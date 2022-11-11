@@ -1,18 +1,16 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private UIManager _uiManager;
+    
     public GameObject[] players = new GameObject[3];
     public int connectedPlayerCount;
     
     public static GameManager Instance;
 
-    public GameObject localPlayer;
+    private bool isPlaying;
     
-    public List<GameObject> playersList = new List<GameObject>();
-
     private void Awake()
     {
         if (Instance != null)
@@ -22,45 +20,83 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-    }
 
+        _uiManager = FindObjectOfType<UIManager>();
+        
+        _uiManager.mainMenu.SetActive(true);
+        _uiManager.hud.SetActive(false);
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if(!players[0].activeSelf) players[0].SetActive(true);
+            if (!players[0].activeSelf)
+            {
+                players[0].SetActive(true);
+                connectedPlayerCount += 1;
+                
+                _uiManager.zPlayerText.SetActive(false);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            if(!players[1].activeSelf) players[1].SetActive(true);
+            if (!players[1].activeSelf)
+            {
+                players[1].SetActive(true);
+                connectedPlayerCount += 1;
+                
+                _uiManager.sPlayerText.SetActive(false);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.O))
         {
-            if(!players[2].activeSelf) players[2].SetActive(true);
+            if (!players[2].activeSelf)
+            {
+                players[2].SetActive(true);
+                connectedPlayerCount += 1;
+                
+                _uiManager.oPlayerText.SetActive(false);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            if(!players[3].activeSelf) players[3].SetActive(true);
-            
+            if (!players[3].activeSelf)
+            {
+                players[3].SetActive(true);
+                connectedPlayerCount += 1;
+                
+                _uiManager.lPlayerText.SetActive(false);
+            }
+        }
+
+        if (connectedPlayerCount == 4 && !isPlaying)
+        {
+            LoadGame();
         }
     }
 
-    public void AddPlayerID()
+    void LoadGame()
     {
-        playersList.AddRange(GameObject.FindGameObjectsWithTag("Player"));
-        
-        for (int i = 0; i < playersList.Count; i++)
+        for (int i = 0; i < players.Length; i++)
         {
-            PlayerController playerController = playersList[i].GetComponent<PlayerController>();
+            PlayerController playerController = players[i].GetComponent<PlayerController>();
+
+            players[i].GetComponent<ShootController>().enabled = true;
             
-            if (i != 0) playerController.neighboorRight = playersList[i - 1].gameObject;
-            else playerController.neighboorRight = playersList[playersList.Count-1].gameObject;
+            if (i != 0) playerController.neighboorRight = players[i - 1];
+            else playerController.neighboorRight = players[players.Length-1];
                 
-            if (i != playersList.Count - 1) playerController.neighboorLeft = playersList[i + 1].gameObject;
-            else playerController.neighboorLeft = playersList[0].gameObject;
+            if (i != players.Length - 1) playerController.neighboorLeft = players[i + 1];
+            else playerController.neighboorLeft = players[0];
         }
+
+        _uiManager.mainMenu.SetActive(false);
+        _uiManager.hud.SetActive(true);
+        
+        isPlaying = true;
     }
+
 }

@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   [Header("Panels")] 
+   public GameObject mainMenu;
+   public GameObject hud;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   [Header("Main Menu")] 
+   public GameObject zPlayerText;
+   public GameObject sPlayerText;
+   public GameObject oPlayerText;
+   public GameObject lPlayerText;
+
 }
