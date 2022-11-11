@@ -10,6 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5dd60286b5f8264791e473dab577805, type: 3}
-  m_Name: New Stat Modifier
+  m_Name: L_DMG-Ratio
   m_EditorClassIdentifier: 
-  modifiers: []
+  modifiers:
+  - stat: 2
+    value: 0

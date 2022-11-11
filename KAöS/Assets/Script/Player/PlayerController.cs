@@ -41,20 +41,20 @@ public class PlayerController : MonoBehaviour, IPunObservable
 
     void Move()
     {
-        if (Input.GetKey(leftInput)) if( !(transform.localRotation.eulerAngles.z < neighboorLeft.transform.localRotation.eulerAngles.z && transform.localRotation.eulerAngles.z + moveSpeed + neighboorMarge > neighboorLeft.transform.localRotation.eulerAngles.z)) transform.Rotate(Vector3.forward * moveSpeed * Time.deltaTime * lag);
-        
-        if (Input.GetKey(rightInput)) if(!(transform.localRotation.eulerAngles.z > neighboorRight.transform.localRotation.eulerAngles.z && transform.localRotation.eulerAngles.z - moveSpeed - neighboorMarge < neighboorRight.transform.localRotation.eulerAngles.z)) transform.Rotate(Vector3.back*moveSpeed * Time.deltaTime * lag); 
+        if (Input.GetKey(leftInput)) if( !(transform.localRotation.eulerAngles.z < neighboorLeft.transform.localRotation.eulerAngles.z && transform.localRotation.eulerAngles.z + moveSpeed + neighboorMarge > neighboorLeft.transform.localRotation.eulerAngles.z)) transform.Rotate(Vector3.forward * moveSpeed * Time.deltaTime );
+         
+        if (Input.GetKey(rightInput)) if(!(transform.localRotation.eulerAngles.z > neighboorRight.transform.localRotation.eulerAngles.z && transform.localRotation.eulerAngles.z - moveSpeed - neighboorMarge < neighboorRight.transform.localRotation.eulerAngles.z)) transform.Rotate(Vector3.back*moveSpeed * Time.deltaTime); 
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
         {
-            stream.SendNext("position");
+            //stream.SendNext("position");
         }
         else
         {
-            position = (Vector3)stream.ReceiveNext();
+           // position = (Vector3)stream.ReceiveNext();
         }
         
         lag = Mathf.Abs((float)(PhotonNetwork.Time - info.SentServerTimestamp));
