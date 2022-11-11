@@ -19,7 +19,7 @@ public class ShootController : MonoBehaviour
 
     [SerializeField] private Transform shootTransform;
     [SerializeField] List<WeaponGizmos> weapons;
-    [SerializeField] List<float> timers = new List<float>();
+    List<float> timers = new List<float>();
 
     private void Start()
     {

@@ -1531,7 +1531,8 @@ MonoBehaviour:
   mainMenuGo: {fileID: 299633436}
   roomInputFieldInfo: {fileID: 1173773803}
   countToJoinRoom: 2
-  playerPrefab: {fileID: 1569277311202164354, guid: 9c1eca7113e2cae409455c4d418abe26, type: 3}
+  playerPrefab: {fileID: 1849799286684386864, guid: 9c1eca7113e2cae409455c4d418abe26,
+    type: 3}
 --- !u!4 &1210901438
 Transform:
   m_ObjectHideFlags: 0
