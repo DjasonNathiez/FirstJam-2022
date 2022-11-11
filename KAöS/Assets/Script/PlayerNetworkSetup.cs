@@ -14,7 +14,7 @@ public class PlayerNetworkSetup : MonoBehaviour
     public void InitPlayer()
     {
         if (GetComponent<PhotonView>().IsMine)
-        {
+        { 
             _playerController.enabled = true;
             _playerController.canMove = true;
         }

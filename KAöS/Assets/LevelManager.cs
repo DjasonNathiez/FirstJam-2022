@@ -1,5 +1,7 @@
+using System;
 using Photon.Pun;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviourPunCallbacks
 {
@@ -10,10 +12,16 @@ public class LevelManager : MonoBehaviourPunCallbacks
     public int numberToSpawn;
 
     private bool enemyInstantiate;
-    
+
+    private void Awake()
+    {
+        core = FindObjectOfType<CoreManager>().gameObject;
+    }
+
     void Start()
     {
         photonView.RPC("SetPositions", RpcTarget.AllBufferedViaServer);
+        
         
         foreach (var player in GameManager.Instance.playersList)
         {

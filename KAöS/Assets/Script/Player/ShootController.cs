@@ -47,6 +47,7 @@ public class ShootController : MonoBehaviour
     void Shoot(WeaponScriptable scriptable)
     {
         Vector3 rotation = transform.rotation.eulerAngles;
+        if(CoreManager.Instance != null)CoreManager.Instance.Impulse(-(shootTransform.position-transform.position), scriptable.moveShot); 
         
         if (scriptable.coneShoot)
         {
@@ -60,6 +61,7 @@ public class ShootController : MonoBehaviour
                     Vector3 rota = new Vector3(0, 0, newAngle);
                     Debug.Log(rota);
                     PoolManager.Instance.PoolInstantiate(scriptable, shootTransform.position, rota);
+                    
                 }
             }
             else
@@ -69,7 +71,8 @@ public class ShootController : MonoBehaviour
         }
         else if (scriptable.bulletNumber == 1)
         {
-            PoolManager.Instance.PoolInstantiate(scriptable, shootTransform.position, rotation);
+            if(PoolManager.Instance != null)PoolManager.Instance.PoolInstantiate(scriptable, shootTransform.position, rotation);
+            
         }
         else
         {

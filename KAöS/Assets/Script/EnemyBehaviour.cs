@@ -22,7 +22,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     
     private Vector3 direction;
 
-    private void Start()
+    private void Awake()
     {
         coreManager = FindObjectOfType<CoreManager>();
     }
