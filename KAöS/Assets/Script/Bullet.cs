@@ -48,7 +48,7 @@ public class Bullet : MonoBehaviour
     {
         IDamageable iD = other.GetComponent<IDamageable>();
         int damage = (int)(script.damage * sender.damageRatio);
-        damage = (int)(damage * (Random.Range(0f, 100f) < sender.critChance ? sender.critChance : 1));
+        damage = (int)(damage * (Random.Range(0f, 100f) < sender.critChance ? sender.critDamage : 1));
         if(iD != null) iD.TakeDamage(damage);
     }
 }
