@@ -97,7 +97,14 @@ public class ShootController : MonoBehaviour
         }
     }
 
-
+    public void AddWeapon(WeaponScriptable weaponScript)
+    {
+        WeaponGizmos newWeapon = new WeaponGizmos();
+        newWeapon.scriptable = weaponScript; 
+        weapons.Add(newWeapon);
+        timers.Add(weaponScript.firerate);
+    }
+    
     public void AddModifier(StatScriptable script)
     {
         statModifiers.Add(script);

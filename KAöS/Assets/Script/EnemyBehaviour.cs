@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, IDamageable
 {
-    public LevelManager _levelManager;
-    public CoreManager coreManager;
-
     public int experienceAmountValue;
     
     public int currentHealth;
@@ -24,16 +21,10 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     
     private Vector3 direction;
 
-    private void Awake()
-    {
-        _levelManager = FindObjectOfType<LevelManager>();
-        coreManager = FindObjectOfType<CoreManager>();
-    }
-
     private void Update()
     {
         //Set the direction of the enemy, looking to reach the player here
-        distToPlayers = Vector3.Distance(transform.position, _levelManager.core.transform.position);
+        distToPlayers = Vector3.Distance(transform.position, CoreManager.Instance.transform.position);
 
         //Move the enemy in the direction
         if (distToPlayers > stopDistance)
@@ -41,14 +32,14 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
             transform.position += transform.right * (speed * Time.deltaTime);
         }
 
-        direction = _levelManager.core.transform.position - transform.position;
+        direction = CoreManager.Instance.transform.position - transform.position;
         
         //Set the look of the enemy (change between up & right, about the sprite)
         transform.right = direction;
 
         if (distToPlayers <= attackRange && !attackOnCd)
         {
-            coreManager.TakeDamage(attackDamage);
+            CoreManager.Instance.TakeDamage(attackDamage);
             attackOnCd = true;
             atkCdTimer = attackCdTime;
         }
@@ -71,7 +62,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0)
         {
-            coreManager.GetExperience(experienceAmountValue);
+            CoreManager.Instance.GetExperience(experienceAmountValue);
             Destroy(gameObject);
         }
     }

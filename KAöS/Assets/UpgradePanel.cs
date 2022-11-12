@@ -15,7 +15,9 @@ public class UpgradePanel : MonoBehaviour
          public TextMeshProUGUI EffectText1;
          public TextMeshProUGUI EffectText2;
          public List<GameObject> colors;
- 
+
+         public bool isWeapon;
+         [HideInInspector]public WeaponScriptable weapon;
          [HideInInspector]public StatScriptable stats;
          [HideInInspector]public bool selected;
      }
@@ -27,7 +29,9 @@ public class UpgradePanel : MonoBehaviour
     public StatScriptable[] uncommonCards;
     public StatScriptable[] rareCards;
     public StatScriptable[] epicCards;
+    public WeaponScriptable[] epicWeapon;
     public StatScriptable[] legendaryCards;
+    public WeaponScriptable[] legendaryWeapon;
 
     public int[] playerPos = new int[4];
     [Space]
@@ -97,7 +101,8 @@ public class UpgradePanel : MonoBehaviour
     {
         for (int i = 0; i < cards.Length; i++)
         {
-            StatScriptable cardStat;
+            StatScriptable cardStat = null;
+            WeaponScriptable weaponStat = null;
             int dropRarity = Random.Range(0, 100);
             if (dropRarity < 45)
             {
@@ -106,26 +111,38 @@ public class UpgradePanel : MonoBehaviour
             }
             else if (dropRarity < 70)
             {
-                cardStat = commonCards[Random.Range(0, uncommonCards.Length)];
+                cardStat = uncommonCards[Random.Range(0, uncommonCards.Length)];
                 cards[i].back.color = colorUncommon;
             }
             else if (dropRarity < 85)
             {
-                cardStat = commonCards[Random.Range(0, rareCards.Length)];
+                cardStat = rareCards[Random.Range(0, rareCards.Length)];
                 cards[i].back.color = colorRare;
             }
             else if (dropRarity < 95)
             {
-                cardStat = commonCards[Random.Range(0, epicCards.Length)];
+                if(Random.value<.5) cardStat = epicCards[Random.Range(0, epicCards.Length)];
+                else
+                {
+                    weaponStat = epicWeapon[Random.Range(0, epicCards.Length)];
+                    cards[i].isWeapon = true;
+                }
                 cards[i].back.color = colorEpic;
             }
             else
             {
-                cardStat = commonCards[Random.Range(0, legendaryCards.Length)];
+                if(Random.value<0.5f)cardStat = legendaryCards[Random.Range(0, legendaryCards.Length)];
+                else
+                {
+                    weaponStat = legendaryWeapon[Random.Range(0, epicCards.Length)];
+                    cards[i].isWeapon = true;
+                }
                 cards[i].back.color = colorlegendary;
             }
 
             cards[i].stats = cardStat;
+            cards[i].weapon = weaponStat;
+            
             string txt = ". . .";
             for (int j = 0; j < 2; j++)
             {
@@ -188,7 +205,11 @@ public class UpgradePanel : MonoBehaviour
         if (!cards[playerPos[index] - 1].selected)
         {
             cards[playerPos[index] - 1].selected = true;
-            if(GameManager.Instance != null)GameManager.Instance.players[index].GetComponent<ShootController>().AddModifier(cards[playerPos[index] - 1].stats);
+            if (GameManager.Instance != null)
+            {
+                if (cards[playerPos[index] - 1].isWeapon) ;
+                else GameManager.Instance.players[index].GetComponent<ShootController>().AddWeapon(cards[playerPos[index] - 1].weapon);
+            }
             cards[playerPos[index] - 1].colors[index].SetActive(false);
             cards[playerPos[index] - 1].back.color = takenColor;
             playerPos[index] = -2;

@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             if (!players[0].activeSelf)
             {
@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
             else playerController.neighboorLeft = players[0];
         }
 
+        LevelManager.Instance.spawning = true;
         _uiManager.mainMenu.SetActive(false);
         _uiManager.hud.SetActive(true);
         
