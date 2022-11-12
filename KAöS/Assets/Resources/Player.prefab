@@ -50,11 +50,11 @@ MonoBehaviour:
   leftInput: 282
   rightInput: 283
   breakInput: 0
-  moveSpeed: 30
+  moveSpeed: 100
   canMove: 1
   neighboorLeft: {fileID: 0}
   neighboorRight: {fileID: 0}
-  neighboorMarge: 20
+  neighboorMarge: 32
 --- !u!114 &1849799286684386865
 MonoBehaviour:
   m_ObjectHideFlags: 0
