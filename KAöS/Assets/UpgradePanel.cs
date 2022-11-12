@@ -19,6 +19,9 @@ public class UpgradePanel : MonoBehaviour
          [HideInInspector]public StatScriptable stats;
          [HideInInspector]public bool selected;
      }
+
+     public static UpgradePanel Instance;
+     
      
     public StatScriptable[] commonCards;
     public StatScriptable[] uncommonCards;
@@ -43,6 +46,13 @@ public class UpgradePanel : MonoBehaviour
 
     public Card[] cards;
 
+    private void Awake()
+    {
+        Instance = this;
+        gameObject.SetActive(false);
+    }
+
+
     private void OnEnable()
     {
         DrawCards();
@@ -51,6 +61,7 @@ public class UpgradePanel : MonoBehaviour
         {
             playerPos[i] = 0;
             startColors[i].SetActive(true);
+            cards[i].selected = false;
         }
 
         Time.timeScale = 0f;
